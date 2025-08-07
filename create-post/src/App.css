@@ -1,0 +1,132 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 50px;
+
+}
+
+.mainheading {
+    text-align: center;
+    margin: 20px;
+    font-style: italic;
+}
+
+.mainCard {
+    height: 400px;
+    width: 35rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    /* background-color: red; */
+
+}
+.haed2{
+    /* padding-left: 100px; */
+    text-align: center;
+    margin: 20px;
+    font-style: italic;
+
+}
+.time{
+    text-align: right;
+}
+.inputthem {
+    margin-top: 20px;
+}
+
+.inputthem input,
+textarea {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    padding-left: 10px;
+    outline: none;
+    font-size: 18px;
+}
+
+.inputthem input:focus,
+textarea:focus{
+    border: 4px solid  rgb(30, 189, 136);
+}
+
+.inputthem button {
+    margin-left: 10px;
+    height: 45px;
+    width: 150px;
+    background-color: aquamarine;
+    border: 3px solid rgb(30, 189, 136);
+}
+.inputthem button:hover{
+    background-color: rgb(77, 235, 182);
+    
+}
+#imageurlpost {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+}
+
+.showpost {
+    height: auto;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+    background-color: #f4f4f4;
+    box-shadow: rgba(0, 0, 0, 2) 0px 3px 8px;
+    border-radius: 25px;
+    font-size: 19px;
+
+}
+.showpost .namediv{ 
+    font-size: 25px;
+    font-style: italic;
+    font-weight: bolder;
+    padding: 10px;
+    border-bottom: 3px solid black;
+    /* box-shadow: 2px 2px 3px black; */
+}
+.showpost .posttitlt{
+    margin-top: 10px;
+}
+.btne {
+    margin-left: 10px;
+    background-color: rgb(30, 189, 136) !important;
+    margin-top: 10px;
+    border: none !important;
+    text-align: center;
+    height: 40px;
+    width: 80px;
+    border-radius: 15px;
+}
+
+.btne:hover {
+    background-color: rgb(93, 245, 194) !important;
+}
+.btnd {
+    margin-left: 10px;
+    background-color: rgb(214, 60, 67) !important;
+    margin-top: 10px;
+    border: none !important;
+    height: 40px;
+    border-radius: 15px;
+    width: 80px;
+}
+
+.btnd:hover {
+    background-color: rgb(245, 119, 125) !important;
+}
