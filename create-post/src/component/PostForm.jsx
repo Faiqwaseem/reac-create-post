@@ -59,11 +59,11 @@ const PostForm = () => {
         }
     }
     // this function is Post Edit with API id method "PUT" 
-    const handleEdit =  (id) => {
+    const handleEdit = (id) => {
         // if(!edit)return;
 
-     const editpost = posts.find(post => post.id === id)
-     setEdit(editpost)
+        const editpost = posts.find(post => post.id === id)
+        setEdit(editpost)
 
         setName(editpost.name);
         setTitle(editpost.title);
@@ -72,8 +72,8 @@ const PostForm = () => {
 
     }
 
-    const handleUpdate = async () =>{
-                if (!edit) return
+    const handleUpdate = async () => {
+        if (!edit) return
 
         const updatedData = {
             name: name,
@@ -89,20 +89,20 @@ const PostForm = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(updatedData)
             })
-            
+
             const updatedPost = await response.json()
-            
-            setPosts(posts.map(post => 
+
+            setPosts(posts.map(post =>
                 post.id === edit ? updatedPost : post
             ))
-            
+
             // Reset form and editing state
             setEdit(null)
             setName("")
             setTitle("")
             setimageurl("")
             setdescription("")
-            
+
         } catch (error) {
             setError("Failed to update post")
             console.log("ERROR", error)
@@ -110,7 +110,7 @@ const PostForm = () => {
             setLoading(false)
         }
     }
-    
+
 
     // this function is Create Post with API method "POST"
     function createPost() {
@@ -155,40 +155,43 @@ const PostForm = () => {
             <h1 className='mainheading'>CRUD Application</h1>
             {error && <div className="error">{error}</div>}
             {loading && <div className="loading"></div>}
-            <h2 className='haed2'>Create Post</h2>
+
             <div className='main'>
                 <div className="mainCard">
+                    <h2 className='haed2'>Create Post</h2>
                     <div className='inputthem'>
-                        <input type="text" id='name' value={name} onChange={(e) => setName(e.target.value)} placeholder='Enter Your Name' />
+                        <input type="text" id='name' maxLength={'20px'} value={name} onChange={(e) => setName(e.target.value)} placeholder='Enter Your Name' />
                     </div>
                     <div className='inputthem'>
-                        <input type="text" id='title' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Enter Title' />
+                        <input type="text" id='title' maxLength={'25px'} value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Enter Title' />
                     </div>
                     <div className='inputthem'>
                         <input type="text" id='imageurl' value={imageurl} onChange={(e) => setimageurl(e.target.value)} placeholder='Enter Your Image URL' />
                     </div>
                     <div className='inputthem'>
-                        <textarea style={{ fontSize: '19px', }} name="" id="message" value={description} onChange={(e) => setdescription(e.target.value)} placeholder='Enter Your Message'></textarea>
+                        <textarea style={{ fontSize: '19px', }} maxLength={'40px'} name="" id="message" value={description} onChange={(e) => setdescription(e.target.value)} placeholder='Enter Your Message'></textarea>
                     </div>
                     <div className='inputthem'>
                         <button onClick={!edit ? createPost : handleUpdate}>{edit ? 'Update Post' : 'Create Post'}</button>
                     </div>
                 </div>
-                {posts.map((item) =>
-                    <div className="showpost" key={item.id}>
-                        <div>
-                            <div className='time'>{format(new Date(item.createdAt), 'MMM dd, yyyy p ')}  </div>
-                            <img id='imageurlpost' src={item.avatar} alt="" />
-                            <div className='namediv'>{item.name}</div>
-                            <h5 className='posttitlt'>{item.title}</h5>
-                            <p className="description">{item.description}</p>
+                <div className="mainPost">
+                    {posts.map((item) =>
+                        <div className="showpost" key={item.id}>
+                            <div>
+                                <div className='time'>{format(new Date(item.createdAt), 'MMM dd, yyyy p ')}  </div>
+                                <img id='imageurlpost' src={item.avatar} alt="" />
+                                <div className='namediv'>{item.name}</div>
+                                <h5 className='posttitlt'>{item.title}</h5>
+                                <p className="description">{item.description}</p>
+                            </div>
+                            <div className='btnfuc'>
+                                <button className='btne' onClick={() => handleEdit(item.id)}>Edit</button>
+                                <button className='btnd' onClick={() => mainDelete(item.id)}>Delete</button>
+                            </div>
                         </div>
-                        <div className='btnfuc'>
-                            <button className='btne' onClick={() => handleEdit(item.id)}>Edit</button>
-                            <button className='btnd' onClick={() => mainDelete(item.id)}>Delete</button>
-                        </div>
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
 
         </div>
