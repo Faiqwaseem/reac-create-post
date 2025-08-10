@@ -49,13 +49,13 @@ const PostForm = () => {
             const postDelete = await response.json();
             console.log(postDelete);
             setPosts(posts.filter(post => post.id !== id))
-
+            if(postDelete){
+                alert("DELETE SUCCESSFULLY")
+            }
 
         } catch (error) {
             setError("Failed to delete post");
             console.log("ERROR", error);
-        } finally {
-            setLoading(false);
         }
     }
     // this function is Post Edit with API id method "PUT" 
@@ -63,6 +63,7 @@ const PostForm = () => {
         // if(!edit)return;
 
         const editpost = posts.find(post => post.id === id)
+        console.log(editpost)
         setEdit(editpost)
 
         setName(editpost.name);
@@ -93,9 +94,12 @@ const PostForm = () => {
             const updatedPost = await response.json()
 
             setPosts(posts.map(post =>
-                post.id === edit ? updatedPost : post
+                post.id === edit.id ? updatedPost : post
             ))
-
+            // console.log(edit.id)
+            if(updatedPost){
+                alert("UPDATE successFULLY")
+            }
             // Reset form and editing state
             setEdit(null)
             setName("")
@@ -141,6 +145,9 @@ const PostForm = () => {
                 setTitle("");
                 setimageurl("");
                 setdescription("");
+                if(parseUpdate){
+                    alert("POST SUCCESSFULLY")
+                }
             } catch (error) {
                 console.log("ERROR", error)
             }
@@ -169,10 +176,11 @@ const PostForm = () => {
                         <input type="text" id='imageurl' value={imageurl} onChange={(e) => setimageurl(e.target.value)} placeholder='Enter Your Image URL' />
                     </div>
                     <div className='inputthem'>
-                        <textarea style={{ fontSize: '19px', }} maxLength={'0px'} name="" id="message" value={description} onChange={(e) => setdescription(e.target.value)} placeholder='Enter Your Message'></textarea>
+                        <textarea style={{ fontSize: '19px', }} maxLength={'50px'} name="" id="message" value={description} onChange={(e) => setdescription(e.target.value)} placeholder='Enter Your Message'></textarea>
                     </div>
                     <div className='inputthem'>
-                        <button onClick={!edit ? createPost : handleUpdate}>{edit ? 'Update Post' : 'Create Post'}</button>
+                        <button type='submit' onClick={!edit? createPost : handleUpdate}>{!edit? 'Create Post':'UpDate'}</button>
+                        
                     </div>
                 </div>
                 <div className="mainPost">
