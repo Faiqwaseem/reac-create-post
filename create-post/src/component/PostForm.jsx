@@ -160,7 +160,7 @@ const PostForm = () => {
                 <div className="mainCard">
                     <h2 className='haed2'>Create Post</h2>
                     <div className='inputthem'>
-                        <input type="text" id='name' maxLength={'20px'} value={name} onChange={(e) => setName(e.target.value)} placeholder='Enter Your Name' />
+                        <input type="text" id='name' maxLength={'25px'} value={name} onChange={(e) => setName(e.target.value)} placeholder='Enter Your Name' />
                     </div>
                     <div className='inputthem'>
                         <input type="text" id='title' maxLength={'25px'} value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Enter Title' />
@@ -169,7 +169,7 @@ const PostForm = () => {
                         <input type="text" id='imageurl' value={imageurl} onChange={(e) => setimageurl(e.target.value)} placeholder='Enter Your Image URL' />
                     </div>
                     <div className='inputthem'>
-                        <textarea style={{ fontSize: '19px', }} maxLength={'40px'} name="" id="message" value={description} onChange={(e) => setdescription(e.target.value)} placeholder='Enter Your Message'></textarea>
+                        <textarea style={{ fontSize: '19px', }} maxLength={'0px'} name="" id="message" value={description} onChange={(e) => setdescription(e.target.value)} placeholder='Enter Your Message'></textarea>
                     </div>
                     <div className='inputthem'>
                         <button onClick={!edit ? createPost : handleUpdate}>{edit ? 'Update Post' : 'Create Post'}</button>
