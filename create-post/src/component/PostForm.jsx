@@ -49,7 +49,7 @@ const PostForm = () => {
             const postDelete = await response.json();
             console.log(postDelete);
             setPosts(posts.filter(post => post.id !== id))
-            if(postDelete){
+            if (postDelete) {
                 alert("DELETE SUCCESSFULLY")
             }
 
@@ -97,7 +97,7 @@ const PostForm = () => {
                 post.id === edit.id ? updatedPost : post
             ))
             // console.log(edit.id)
-            if(updatedPost){
+            if (updatedPost) {
                 alert("UPDATE successFULLY")
             }
             // Reset form and editing state
@@ -145,7 +145,7 @@ const PostForm = () => {
                 setTitle("");
                 setimageurl("");
                 setdescription("");
-                if(parseUpdate){
+                if (parseUpdate) {
                     alert("POST SUCCESSFULLY")
                 }
             } catch (error) {
@@ -176,11 +176,11 @@ const PostForm = () => {
                         <input type="text" id='imageurl' value={imageurl} onChange={(e) => setimageurl(e.target.value)} placeholder='Enter Your Image URL' />
                     </div>
                     <div className='inputthem'>
-                        <textarea style={{ fontSize: '19px', }} maxLength={'50px'} name="" id="message" value={description} onChange={(e) => setdescription(e.target.value)} placeholder='Enter Your Message'></textarea>
+                        <textarea  maxLength={'30px'} name="" id="message" value={description} onChange={(e) => setdescription(e.target.value)} placeholder='Enter Your Message'></textarea>
                     </div>
                     <div className='inputthem'>
-                        <button type='submit' onClick={!edit? createPost : handleUpdate}>{!edit? 'Create Post':'UpDate'}</button>
-                        
+                        <button type='submit' onClick={!edit ? createPost : handleUpdate}>{!edit ? 'Create Post' : 'UpDate'}</button>
+
                     </div>
                 </div>
                 <div className="mainPost">
